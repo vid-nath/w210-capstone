@@ -60,8 +60,10 @@ def index():
 def get_data():
     if request.method == 'POST':
         # TODO need to add Typeform output into the JSON file 
+        print("Getting JSON Data")
         json_data = recommend()
-        return render_template('index.html', table=json_data.to_html()))
+        print(json_data)
+        return render_template('index.html', table=json_data.to_html())
 
 
 # @app.route("/product")
