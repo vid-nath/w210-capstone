@@ -15,28 +15,8 @@ import turicreate as tc
 app = Flask(__name__)
 CORS(app)
 
-# Page redirects.
-@app.route("/")
-def root():
-    return render_template("index.html")
-
-# @app.route("/product")
-# def summary():
-#     return render_template("product.html")
-
-
-# @app.route("/process")
-# def segment():
-#     return render_template("process.html")
-
-
-# @app.route("/people")
-# def score():
-#     return render_template("people.html")   
-
-
+# Recommend method to clean and provide the recommended values.
 # Import json of user's answers and run model prediction.
-@app.route("/recommend", methods=['POST'])
 def recommend():
     json_file_path = "data/questionnaire_result.json"
 
@@ -70,9 +50,43 @@ def recommend():
     json_output = json.dumps({"game_id": list(output["game_id"]), "score": list(output["score"])})
     return json_output
 
+
+# Page redirects.
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/", methods=['POST', 'GET'])
+def get_data():
+    if request.method == 'POST':
+        # TODO need to add Typeform output into the JSON file 
+        json_data = recommend()
+        return render_template('index.html', table=json_data.to_html()))
+
+
+# @app.route("/product")
+# def summary():
+#     return render_template("product.html")
+
+
+# @app.route("/process")
+# def segment():
+#     return render_template("process.html")
+
+
+# @app.route("/people")
+# def score():
+#     return render_template("people.html")   
+
+
+
+
 #APP_FOLDER = os.path.dirname(os.path.realpath(__file__))
 
 # Main
-def run_app():
-    app.run(host="0.0.0.0", port = 5000, debug = True)
-    
+if __name__ == '__main__':
+    host  = '0.0.0.0'
+    port  = 5000
+    debug = True
+    url   = 'http://127.0.0.0:{0}'.format(port)
+    app.run(host=host, port=port, debug=debug, use_reloader=False)
