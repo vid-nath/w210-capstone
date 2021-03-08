@@ -17,6 +17,7 @@ CORS(app)
 
 # Recommend method to clean and provide the recommended values.
 # Import json of user's answers and run model prediction.
+@app.route("/", methods=['POST'])
 def recommend():
     json_file_path = "data/questionnaire_result.json"
 
@@ -87,8 +88,4 @@ def get_data():
 
 # Main
 if __name__ == '__main__':
-    host  = '0.0.0.0'
-    port  = 5000
-    debug = True
-    url   = 'http://127.0.0.0:{0}'.format(port)
-    app.run(host=host, port=port, debug=debug, use_reloader=False)
+    app.run(port=5000, debug=True, use_reloader=True)
