@@ -70,12 +70,8 @@ def recommend():
     json_output = json.dumps({"game_id": list(output["game_id"]), "score": list(output["score"])})
     return json_output
 
-APP_FOLDER = os.path.dirname(os.path.realpath(__file__))
+#APP_FOLDER = os.path.dirname(os.path.realpath(__file__))
 
 # Main
 if __name__ == "__main__":
-  port = 5000
-  if len(sys.argv[1:]) > 0:
-    port = sys.argv[1]
-
-  app.run(host="127.0.0.0", port=port)
+    app.run(host="0.0.0.0", port = 5000, debug = True)
