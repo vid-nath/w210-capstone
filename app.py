@@ -71,3 +71,11 @@ def recommend():
     return json_output
 
 APP_FOLDER = os.path.dirname(os.path.realpath(__file__))
+
+# Main
+if __name__ == "__main__":
+  port = 80
+  if len(sys.argv[1:]) > 0:
+    port = sys.argv[1]
+
+  app.run(host="0.0.0.0", port=port)
