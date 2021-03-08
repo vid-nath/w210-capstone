@@ -1,0 +1,533 @@
+{
+  "headers": {
+    "host": "en6ejr1z5a83bhs.m.pipedream.net",
+    "x-amzn-trace-id": "Root=1-6039368e-74aafe8f78bf45cc7e6c200f",
+    "content-length": "6858",
+    "user-agent": "Typeform Webhooks",
+    "content-type": "application/json",
+    "accept-encoding": "gzip"
+  },
+  "body": {
+    "event_id": "01EZFQT67CB7SKJNH16W34KG5B",
+    "event_type": "form_response",
+    "form_response": {
+      "form_id": "n7VAgSMX",
+      "token": "3zwukwlx12zfwj8n3f3zwukw0769p71f",
+      "landed_at": "2021-02-26T17:56:11Z",
+      "submitted_at": "2021-02-26T17:57:32Z",
+      "definition": {
+        "id": "n7VAgSMX",
+        "title": "BoardGameGuru Survey",
+        "fields": [
+          {
+            "id": "nhOQpbmcBXJK",
+            "title": "Target age range",
+            "type": "multiple_choice",
+            "ref": "3bcff2cc-dc9b-4528-b9ba-b217ed1bc51f",
+            "properties": {},
+            "choices": [
+              {
+                "id": "t9HbuJGPLLZ5",
+                "label": "Toddler (2-5 years old)"
+              },
+              {
+                "id": "hdAhtu3zHyna",
+                "label": "Children (6-11 years old)"
+              },
+              {
+                "id": "b8DeQWqxcrTB",
+                "label": "Youth (12-16 years old)"
+              },
+              {
+                "id": "0lH1uvGOj5Hr",
+                "label": "Adult (17+ years old)"
+              },
+              {
+                "id": "HmkcRektZwBe",
+                "label": "Any"
+              }
+            ]
+          },
+          {
+            "id": "BKDIs23C3Xx7",
+            "title": "Number of players",
+            "type": "multiple_choice",
+            "ref": "0c51cf38-9c9a-4197-9f09-7a91b80dc7f2",
+            "properties": {},
+            "choices": [
+              {
+                "id": "7L7I7XSOSkaX",
+                "label": "Solo or Pair (1-2 players)"
+              },
+              {
+                "id": "GSiyvC0X0cK0",
+                "label": "Small Group (2-4 players)"
+              },
+              {
+                "id": "eq2ASy2vE9ic",
+                "label": "Party (5+ players)"
+              },
+              {
+                "id": "7iyQGE3Omkly",
+                "label": "Any"
+              }
+            ]
+          },
+          {
+            "id": "5R8tpOEhukeY",
+            "title": "Target playing time",
+            "type": "multiple_choice",
+            "ref": "db2ea106-781d-4b75-8c4d-5a217ddab623",
+            "properties": {},
+            "choices": [
+              {
+                "id": "gvqYHwN2A0TH",
+                "label": "Short (5-30 minutes)"
+              },
+              {
+                "id": "6PHvV0dH3ETS",
+                "label": "Medium (30-60 minutes)"
+              },
+              {
+                "id": "uCRG6SqSvYgC",
+                "label": "Long (60-120 minutes)"
+              },
+              {
+                "id": "kyn3oNarjPQI",
+                "label": "Multiday (120+ minutes)"
+              },
+              {
+                "id": "3CO5FKdttdCc",
+                "label": "Any"
+              }
+            ]
+          },
+          {
+            "id": "iB6fNqRDjf67",
+            "title": "*Pick the game you like the most*",
+            "type": "picture_choice",
+            "ref": "8b94fd8907a2692a",
+            "properties": {},
+            "choices": [
+              {
+                "id": "Rzideg9JVdqO",
+                "label": "7 Wonders"
+              },
+              {
+                "id": "fJUwdInX52bc",
+                "label": "Arkham Horror"
+              },
+              {
+                "id": "9VFp2jGRJOHG",
+                "label": "Azul"
+              },
+              {
+                "id": "m78Czh54uOyn",
+                "label": "Battleship"
+              },
+              {
+                "id": "DP75tupuEJJv",
+                "label": "Chutes and Ladders"
+              },
+              {
+                "id": "2ifw8UTbZMoE",
+                "label": "Codenames"
+              },
+              {
+                "id": "YroIzawqldSG",
+                "label": "Exploding Kittens"
+              },
+              {
+                "id": "41tCbBq3IQY8",
+                "label": "Othello"
+              },
+              {
+                "id": "HlW2qhLy0Ql2",
+                "label": "Power Grid"
+              },
+              {
+                "id": "n4Tbx1M6XkPM",
+                "label": "Star Wars: X-Wing Miniatures"
+              },
+              {
+                "id": "QtHlTZWvBz6M",
+                "label": "I don't like any of these games"
+              }
+            ]
+          },
+          {
+            "id": "oWsJxotxm2WL",
+            "title": "*Pick the game you like the most*",
+            "type": "picture_choice",
+            "ref": "7a49a907-dd2a-41c6-b411-ecc6aac07f0f",
+            "properties": {},
+            "choices": [
+              {
+                "id": "Y32mX5kCiFId",
+                "label": "Apples to Apples"
+              },
+              {
+                "id": "ISgRiyRwwj2R",
+                "label": "Backgammon"
+              },
+              {
+                "id": "T0RyH3tYjPdx",
+                "label": "Battlestar Galactica"
+              },
+              {
+                "id": "oQn2Z5Mdiurd",
+                "label": "Dixit"
+              },
+              {
+                "id": "mNCokosFeC6g",
+                "label": "Gloomhaven"
+              },
+              {
+                "id": "HmWmzP1AFC8N",
+                "label": "Loopin' Louie"
+              },
+              {
+                "id": "RA6cx02h1M3E",
+                "label": "Operation"
+              },
+              {
+                "id": "AJK96Jt348FF",
+                "label": "Sushi Go!"
+              },
+              {
+                "id": "oTPpP2fUW4AE",
+                "label": "Ticket to Ride"
+              },
+              {
+                "id": "g4lhN4yKyMpW",
+                "label": "Star Wars: X-Wing Miniatures"
+              },
+              {
+                "id": "WJ1gYP4sBSwt",
+                "label": "I don't like any of these games"
+              }
+            ]
+          },
+          {
+            "id": "UXixWWtygfCV",
+            "title": "*Pick the game you like the most*",
+            "type": "picture_choice",
+            "ref": "21d7e5ff-6fa1-495a-8269-2b5a2996cb26",
+            "properties": {},
+            "choices": [
+              {
+                "id": "lVLDuSxQ3CEM",
+                "label": "Blokus"
+              },
+              {
+                "id": "OuYC1ZmFXsDo",
+                "label": "Connect Four"
+              },
+              {
+                "id": "DCfZcpS0oMIy",
+                "label": "Coup"
+              },
+              {
+                "id": "vHNNC1V5ahFb",
+                "label": "Dominion"
+              },
+              {
+                "id": "QR60IUzr3qdD",
+                "label": "Magic: The Gathering"
+              },
+              {
+                "id": "E74H31gIOvsa",
+                "label": "Memoir '44"
+              },
+              {
+                "id": "dcRgoNxGdMgN",
+                "label": "Munchkin"
+              },
+              {
+                "id": "S7H2xFICd7q3",
+                "label": "Risk"
+              },
+              {
+                "id": "ixs7NxNjfs8H",
+                "label": "Sleeping Queens"
+              },
+              {
+                "id": "LGIfC2eZqlM3",
+                "label": "Small World"
+              },
+              {
+                "id": "7A2JxPqr3JYi",
+                "label": "I don't like any of these games"
+              }
+            ]
+          },
+          {
+            "id": "RHkMGOf4e255",
+            "title": "*Pick the game you like the most*",
+            "type": "picture_choice",
+            "ref": "a880928b-2cdb-4329-9920-d667d1441948",
+            "properties": {},
+            "choices": [
+              {
+                "id": "PyLqrG2ktUYx",
+                "label": "Arkham Horror: The Card Game"
+              },
+              {
+                "id": "6e9my7aE903p",
+                "label": "Go"
+              },
+              {
+                "id": "Zcx8e4Wq9EeS",
+                "label": "Monopoly"
+              },
+              {
+                "id": "4ohyq4Vv2Mr7",
+                "label": "Pandemic"
+              },
+              {
+                "id": "YeNlSAs6whXD",
+                "label": "Pandemic Legacy S1"
+              },
+              {
+                "id": "miCyVFz256RZ",
+                "label": "Root"
+              },
+              {
+                "id": "4PaOx7hzBBYN",
+                "label": "Sorry!"
+              },
+              {
+                "id": "5ZTFGXOnZgG7",
+                "label": "Splendor"
+              },
+              {
+                "id": "fPGiG49pB47p",
+                "label": "Terraforming Mars"
+              },
+              {
+                "id": "nZJEG1f9L9ZD",
+                "label": "The Resistance"
+              },
+              {
+                "id": "slYFpCIL2Avu",
+                "label": "I don't like any of these games"
+              }
+            ]
+          },
+          {
+            "id": "bhIda5mU3MyU",
+            "title": "*Pick the game you like the most*",
+            "type": "picture_choice",
+            "ref": "882916ce-b512-49e6-b85d-8b75b574b00c",
+            "properties": {},
+            "choices": [
+              {
+                "id": "HvvVeh4fTxCB",
+                "label": "Agricola"
+              },
+              {
+                "id": "2NbxZGJwgORz",
+                "label": "BANG!"
+              },
+              {
+                "id": "sYy4IPGICqcF",
+                "label": "Carcassonne"
+              },
+              {
+                "id": "0D4Vt0Zl3t9X",
+                "label": "Dead of Winter"
+              },
+              {
+                "id": "CyzbS78cEHFj",
+                "label": "Diplomacy"
+              },
+              {
+                "id": "5NeakUuaT8LB",
+                "label": "Guess Who?"
+              },
+              {
+                "id": "FcI3Jzo2cEAH",
+                "label": "King of Tokyo"
+              },
+              {
+                "id": "PzdzevvUh2sc",
+                "label": "Patchwork"
+              },
+              {
+                "id": "DMfubNvx3wuc",
+                "label": "Scrabble"
+              },
+              {
+                "id": "K9Bl31w7VQPv",
+                "label": "Lord of the Rings Card Game"
+              },
+              {
+                "id": "aIEGvxh1TWaT",
+                "label": "I don't like any of these games"
+              }
+            ]
+          },
+          {
+            "id": "8VPHRVUvMwzV",
+            "title": "*Pick the game you like the most*",
+            "type": "picture_choice",
+            "ref": "ff9cf090-6a24-4e36-98da-2dcb71f395a1",
+            "properties": {},
+            "choices": [
+              {
+                "id": "n0a70IZblNgr",
+                "label": "Android: Netrunner"
+              },
+              {
+                "id": "wRnEgku68jOd",
+                "label": "Axis & Allies"
+              },
+              {
+                "id": "WyjVu622I4Ek",
+                "label": "Betrayal at House on the Hill"
+              },
+              {
+                "id": "gIhOdeoe3wsY",
+                "label": "Candy Land"
+              },
+              {
+                "id": "VuISmR8N0kNN",
+                "label": "Cards Against Humanity"
+              },
+              {
+                "id": "RbjwAyzxFJvB",
+                "label": "Catan"
+              },
+              {
+                "id": "6Y3xbGF11Oye",
+                "label": "Chess"
+              },
+              {
+                "id": "LfVxX8zNkdfm",
+                "label": "Love Letter"
+              },
+              {
+                "id": "gvoHtRiOucaO",
+                "label": "Puerto Rico"
+              },
+              {
+                "id": "lgzSzfzxnII0",
+                "label": "Uno"
+              },
+              {
+                "id": "JjELlf8684hl",
+                "label": "I don't like any of these games"
+              }
+            ]
+          }
+        ]
+      },
+      "answers": [
+        {
+          "type": "choice",
+          "choice": {
+            "label": "Youth (12-16 years old)"
+          },
+          "field": {
+            "id": "nhOQpbmcBXJK",
+            "type": "multiple_choice",
+            "ref": "3bcff2cc-dc9b-4528-b9ba-b217ed1bc51f"
+          }
+        },
+        {
+          "type": "choice",
+          "choice": {
+            "label": "Party (5+ players)"
+          },
+          "field": {
+            "id": "BKDIs23C3Xx7",
+            "type": "multiple_choice",
+            "ref": "0c51cf38-9c9a-4197-9f09-7a91b80dc7f2"
+          }
+        },
+        {
+          "type": "choice",
+          "choice": {
+            "label": "Any"
+          },
+          "field": {
+            "id": "5R8tpOEhukeY",
+            "type": "multiple_choice",
+            "ref": "db2ea106-781d-4b75-8c4d-5a217ddab623"
+          }
+        },
+        {
+          "type": "choice",
+          "choice": {
+            "label": "Azul"
+          },
+          "field": {
+            "id": "iB6fNqRDjf67",
+            "type": "picture_choice",
+            "ref": "8b94fd8907a2692a"
+          }
+        },
+        {
+          "type": "choice",
+          "choice": {
+            "label": "Ticket to Ride"
+          },
+          "field": {
+            "id": "oWsJxotxm2WL",
+            "type": "picture_choice",
+            "ref": "7a49a907-dd2a-41c6-b411-ecc6aac07f0f"
+          }
+        },
+        {
+          "type": "choice",
+          "choice": {
+            "label": "Dominion"
+          },
+          "field": {
+            "id": "UXixWWtygfCV",
+            "type": "picture_choice",
+            "ref": "21d7e5ff-6fa1-495a-8269-2b5a2996cb26"
+          }
+        },
+        {
+          "type": "choice",
+          "choice": {
+            "label": "Pandemic"
+          },
+          "field": {
+            "id": "RHkMGOf4e255",
+            "type": "picture_choice",
+            "ref": "a880928b-2cdb-4329-9920-d667d1441948"
+          }
+        },
+        {
+          "type": "choice",
+          "choice": {
+            "label": "Agricola"
+          },
+          "field": {
+            "id": "bhIda5mU3MyU",
+            "type": "picture_choice",
+            "ref": "882916ce-b512-49e6-b85d-8b75b574b00c"
+          }
+        },
+        {
+          "type": "choice",
+          "choice": {
+            "label": "I don't like any of these games"
+          },
+          "field": {
+            "id": "8VPHRVUvMwzV",
+            "type": "picture_choice",
+            "ref": "ff9cf090-6a24-4e36-98da-2dcb71f395a1"
+          }
+        }
+      ]
+    }
+  },
+  "inferred_body_type": "JSON",
+  "method": "POST",
+  "url": "https://en6ejr1z5a83bhs.m.pipedream.net/",
+  "client_ip": "52.70.187.49",
+  "query": {}
+}

@@ -1,0 +1,1 @@
+{"survey": "bgg_user", "user_id": "Stupendous12", "age": {"question": "age", "min": 6, "max": 11}, "num_players": {"question": "num_players", "min": 2, "max": 4}, "play_time": {"question": "play_time", "min": 30, "max": 60}, "games": {"13": "Catan", "133473": "Sushi Go!", "9209": "Ticket to Ride"}}

@@ -1,0 +1,1 @@
+{"survey": "questionnaire", "age": {"question": "age", "min": 10, "max": 16}, "num_players": {"question": "num_players", "min": 5, "max": 100}, "play_time": {"question": "play_time", "min": 5, "max": 100000}, "games": {"230802": "Azul", "9209": "Ticket to Ride", "36218": "Dominion", "30549": "Pandemic", "31260": "Agricola"}}
