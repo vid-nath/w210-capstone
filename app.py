@@ -36,7 +36,7 @@ def root():
 
 
 # Import json of user's answers and run model prediction.
-@app.route("/recommend", methods=['GET'])
+@app.route("/recommend", methods=['POST'])
 def recommend():
     json_file_path = "data/questionnaire_result.json"
 
