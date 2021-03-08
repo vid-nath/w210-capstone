@@ -1,1 +1,1 @@
-worker: gunicorn app:app --max-requests 2 --preload -b 0.0.0.0:5000 --log-file=-
+web: gunicorn app:app --max-requests 2 -b 127.0.0.0:5000 --access-logfile -
