@@ -20,19 +20,19 @@ CORS(app)
 def root():
     return render_template("index.html")
 
-@app.route("/product")
-def summary():
-    return render_template("product.html")
+# @app.route("/product")
+# def summary():
+#     return render_template("product.html")
 
 
-@app.route("/process")
-def segment():
-    return render_template("process.html")
+# @app.route("/process")
+# def segment():
+#     return render_template("process.html")
 
 
-@app.route("/people")
-def score():
-    return render_template("people.html")   
+# @app.route("/people")
+# def score():
+#     return render_template("people.html")   
 
 
 # Import json of user's answers and run model prediction.
