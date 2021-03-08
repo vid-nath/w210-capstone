@@ -1,1 +1,1 @@
-web: gunicorn --max-requests 2 -b 0.0.0.0:5000 --access-logfile - --preload_app True app:app
+web: gunicorn --max-requests 2 -b 0.0.0.0:5000 --access-logfile=- --preload_app True app:app
