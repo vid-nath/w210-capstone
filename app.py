@@ -73,5 +73,6 @@ def recommend():
 #APP_FOLDER = os.path.dirname(os.path.realpath(__file__))
 
 # Main
-if __name__ == "__main__":
+def run_app():
     app.run(host="0.0.0.0", port = 5000, debug = True)
+    
