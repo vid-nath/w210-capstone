@@ -53,17 +53,18 @@ def recommend():
 
 
 # Page redirects.
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/")
 def index():
-    json_data = recommend()
-    if request.method == 'POST':
-        return json_data
-    print("Getting JSON_DATA")
-    return render_template("index.html", table=json_data)
+    return render_template("index.html")
 
 @app.route("/product")
-def summary():
+def product():
     return render_template("product.html")
+
+@app.route("/results", methods=['GET'])
+def results():
+    json_data = recommend()
+    return json_data
 
 
     # if request.method == 'POST':
