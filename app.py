@@ -64,7 +64,7 @@ def get_data():
         print("Getting JSON Data")
         json_data = recommend()
         print(json_data)
-        return render_template('index.html', table=json_data.to_html())
+        return render_template('index.html', table=json_data)
 
 
 # @app.route("/product")
