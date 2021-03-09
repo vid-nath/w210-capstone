@@ -16,7 +16,9 @@ CORS(app)
 
 # Simple method to retrieve a pre-saved model
 def load_model():
-    return tc.load_model('game_rec_model_2k')
+    # Use minified data for now to upload to git and deploy
+    # TODO Update the hook to use S3 bucket.
+    return tc.load_model('game_rec_model_min')
 
 # Recommend method to clean and provide the recommended values.
 # Import json of user's answers and run model prediction.
@@ -68,13 +70,10 @@ def product():
     return render_template("product.html")
 
 
-
 @app.route("/results", methods=['GET'])
 def results():
     json_data = recommend()
     return json_data
-
-
 
 #APP_FOLDER = os.path.dirname(os.path.realpath(__file__))
 
