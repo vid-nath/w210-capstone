@@ -17,7 +17,7 @@ CORS(app)
 
 # Recommend method to clean and provide the recommended values.
 # Import json of user's answers and run model prediction.
-@app.route("/recommend", methods=['POST'])
+@app.route("/recommend", methods=['GET'])
 def recommend():
     json_file_path = "data/questionnaire_result.json"
 
@@ -53,16 +53,11 @@ def recommend():
 
 
 # Page redirects.
-@app.route("/")
+@app.route("/", methods=['GET'])
 def index():
-    return render_template("index.html")
-
-@app.route("/", methods=['POST', 'GET'])
-def get_data():
-    print("Getting JSON Data")
     json_data = recommend()
-    print(json_data)
-    return render_template('index.html', table=json_data)
+    print("Getting JSON_DATA")
+    return render_template("index.html", table=json_data)
 
     # if request.method == 'POST':
     #     # TODO need to add Typeform output into the JSON file 
