@@ -5,7 +5,6 @@
 
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-from flask_s3 import FLASKS3
 
 import json
 import os
@@ -13,39 +12,11 @@ import sys
 import turicreate as tc
 
 app = Flask(__name__)
-app.config['FLASKS3_BUCKET_NAME'] = 'w210-capstone'
-s3 = FLASKS3(app)
 CORS(app)
 
 # Simple method to retrieve a pre-saved model
 def load_model():
-    return tc.load_model('http://s3.amazonaws.com/w210-capstone/game_rec_model')
-
-# S3 Connection
-@app.route('/sign_s3/')
-def sign_s3():
-  S3_BUCKET = os.environ.get('S3_BUCKET')
-
-  file_name = request.args.get('file_name')
-  file_type = request.args.get('file_type')
-
-  s3 = boto3.client('s3')
-
-  presigned_post = s3.generate_presigned_post(
-    Bucket = S3_BUCKET,
-    Key = file_name,
-    Fields = {"acl": "public-read", "Content-Type": file_type},
-    Conditions = [
-      {"acl": "public-read"},
-      {"Content-Type": file_type}
-    ],
-    ExpiresIn = 3600
-  )
-
-  return json.dumps({
-    'data': presigned_post,
-    'url': 'https://%s.s3.amazonaws.com/%s' % (S3_BUCKET, file_name)
-  })
+    return tc.load_model('game_rec_model_2k')
 
 # Recommend method to clean and provide the recommended values.
 # Import json of user's answers and run model prediction.
@@ -64,11 +35,13 @@ def recommend():
                                   "num_players_max": [new_obs_data["num_players"]["max"]],
                                   "play_time_min": [new_obs_data["play_time"]["min"]],
                                   "play_time_max": [new_obs_data["play_time"]["max"]]})
+
+    model = load_model()
     
-    recommend_items = recommendation.rec_model.recommend_from_interactions(new_obs_data_new, k=50)
+    recommend_items = model.rec_model.recommend_from_interactions(new_obs_data_new, k=50)
     
     # Select 50 recommended games' info.
-    df_rec_game_info = recommendation.df_items.loc[recommendation.df_items['game_id'].isin(recommend_items['game_id'])]
+    df_rec_game_info = model.df_items.loc[model.df_items['game_id'].isin(recommend_items['game_id'])]
     
     # Filter out game based on user answers.
     df_items_filter = df_rec_game_info[(df_rec_game_info['age_min']  > filter_condt['age_min'])       &
