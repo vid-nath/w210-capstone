@@ -53,11 +53,18 @@ def recommend():
 
 
 # Page redirects.
-@app.route("/", methods=['GET'])
+@app.route("/", methods=['GET', 'POST'])
 def index():
     json_data = recommend()
+    if request.method == 'POST':
+        return json_data
     print("Getting JSON_DATA")
     return render_template("index.html", table=json_data)
+
+@app.route("/product")
+def summary():
+    return render_template("product.html")
+
 
     # if request.method == 'POST':
     #     # TODO need to add Typeform output into the JSON file 
@@ -67,9 +74,6 @@ def index():
     #     return render_template('index.html', table=json_data)
 
 
-# @app.route("/product")
-# def summary():
-#     return render_template("product.html")
 
 
 # @app.route("/process")
