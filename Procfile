@@ -1,1 +1,1 @@
-web: gunicorn app:app --max-requests 4 -b 0.0.0.0:5000 --access-logfile=-
+web: gunicorn w210-capstone-test:app --max-requests 4 -b 0.0.0.0:5000 --access-logfile=-
