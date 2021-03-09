@@ -5,7 +5,7 @@
 
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-import recommendation
+from flask_s3 import FLASKS3
 
 import json
 import os
@@ -13,17 +13,49 @@ import sys
 import turicreate as tc
 
 app = Flask(__name__)
+app.config['FLASKS3_BUCKET_NAME'] = 'w210-capstone'
+s3 = FLASKS3(app)
 CORS(app)
+
+# Simple method to retrieve a pre-saved model
+def load_model():
+    return tc.load_model('http://s3.amazonaws.com/w210-capstone/game_rec_model')
+
+# S3 Connection
+@app.route('/sign_s3/')
+def sign_s3():
+  S3_BUCKET = os.environ.get('S3_BUCKET')
+
+  file_name = request.args.get('file_name')
+  file_type = request.args.get('file_type')
+
+  s3 = boto3.client('s3')
+
+  presigned_post = s3.generate_presigned_post(
+    Bucket = S3_BUCKET,
+    Key = file_name,
+    Fields = {"acl": "public-read", "Content-Type": file_type},
+    Conditions = [
+      {"acl": "public-read"},
+      {"Content-Type": file_type}
+    ],
+    ExpiresIn = 3600
+  )
+
+  return json.dumps({
+    'data': presigned_post,
+    'url': 'https://%s.s3.amazonaws.com/%s' % (S3_BUCKET, file_name)
+  })
 
 # Recommend method to clean and provide the recommended values.
 # Import json of user's answers and run model prediction.
 @app.route("/recommend", methods=['GET'])
 def recommend():
+    # TODO - hook to the onSubmit call to Typeform results - needs to pull from online
     json_file_path = "data/questionnaire_result.json"
 
     with open(json_file_path, 'r') as j:
          new_obs_data = json.loads(j.read())
-
 
     new_obs_data_new = [int(i) for i in list(new_obs_data["games"].keys())]
     filter_condt     = tc.SFrame({"age_min": [new_obs_data["age"]["min"]],
@@ -53,39 +85,21 @@ def recommend():
 
 
 # Page redirects.
-@app.route("/")
+@app.route("/", methods=['GET'])
 def index():
-    return render_template("index.html")
+    json_data = recommend()
+    return render_template("index.html", table=json_data)
 
 @app.route("/product")
 def product():
     return render_template("product.html")
 
+
+
 @app.route("/results", methods=['GET'])
 def results():
     json_data = recommend()
     return json_data
-
-
-    # if request.method == 'POST':
-    #     # TODO need to add Typeform output into the JSON file 
-    #     print("Getting JSON Data")
-    #     json_data = recommend()
-    #     print(json_data)
-    #     return render_template('index.html', table=json_data)
-
-
-
-
-# @app.route("/process")
-# def segment():
-#     return render_template("process.html")
-
-
-# @app.route("/people")
-# def score():
-#     return render_template("people.html")   
-
 
 
 
@@ -94,3 +108,18 @@ def results():
 # Main
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
+
+
+"""
+TODO: 
+- Clean up recommend code:
+    - Remove data processing and data folders
+    - Update game_rec_model folder with the one from main repo
+    - Redeploy and test on heroku
+- Setup webhooks with Flask and Typeform
+    - Capture output json from model and from Typeform submit
+    - Integrate Typeform results processing
+
+- Copy over the current webform onto the ischool domain and fix up site there for "live hosting"
+
+"""
