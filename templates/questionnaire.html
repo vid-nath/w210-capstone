@@ -31,6 +31,21 @@
     <link rel="stylesheet" href="static/css/scorecard/search.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css">
     <link href="static/assets/icomoon/css/icomoon.css" rel="stylesheet">
+    <style>
+      th, td, p, input {
+          font:14px Verdana;
+      }
+      table, th, td 
+      {
+          border: solid 1px #DDD;
+          border-collapse: collapse;
+          padding: 2px 3px;
+          text-align: center;
+      }
+      th {
+          font-weight:bold;
+      }
+  </style>
   </head>
 
   <body>
@@ -38,7 +53,7 @@
     <!--header start-->
     <header class="header white-bg card-shadow-light">     
       <!--logo start-->
-      <a href="index" class="logo" style='font-size: 32px;'>Board Game<span> Guru</span></a>
+      <a href="." class="logo" style='font-size: 32px;'>Board Game<span> Guru</span></a>
       <div class="top-nav ">
         <ul class="nav pull-left top-menu">
             <li>
@@ -79,16 +94,14 @@
         <div id="home-page-content">
           <div class="card custom-overview card-shadow-light">
             <div class="row card-body" style='font-size:28px; text-align: center; margin: 0 auto; width: 60%;'>
-              <h2>Output of the Questionnaire</h2>
-              <div>{{ data }}</div>
+              <h2 style='text-align: center; margin: 0 auto; width: 60%;'><strong><em>Output of the Questionnaire</em></strong></h2>
+              <div style='font-size:28px; text-align: center; margin: 0 auto; width: 60%;'> GAME IDS: {{ in_data }}</div>
             </div>
           </div>
         </div>
       </div>  
     </section>
     <!-- main content end -->
-
-
   </div>
 
     <!-- js placed at the end of the document so the pages load faster -->

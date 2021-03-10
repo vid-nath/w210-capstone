@@ -20,20 +20,22 @@ CORS(app)
 MODEL_PATH  = 'game_rec_model_min'
 MODEL       = tc.load_model(MODEL_PATH)
 #GAME_INFO   = pd.read_csv('data/game_info_full.csv')
-#GAME_LOOKUP = pd.read_csv('data/game_lookup.csv')
+GAME_LOOKUP = pd.read_csv('game_lookup.csv')
 
-# def game_lookup(inId):
-#     game_data = GAME_LOOKUP[GAME_LOOKUP.game_id == inId]
-#     return game_data['game_id'][0]
+def game_lookup(inId):
+    game_data = GAME_LOOKUP[GAME_LOOKUP.game_id == inId]
+    print(game_data.describe, file=sys.stdout)
+    return game_data['game_id']
 
 
 # Recommend method to clean and provide the recommended values.
 # Import json of user's answers and run model prediction.
-@app.route("/recommend", methods=['GET'])
-def recommend(output_file=False, output_path='data/json_output.json'):
+#@app.route("/recommend", methods=['GET'])
+
+def recommend():#output_file=False, output_path='json_test_output.json'):
     # TODO - hook to the onSubmit call to Typeform results - needs to pull from online
     print("Reading questionnaire input...", file=sys.stdout)
-    json_file_path = "data/questionnaire_result.json"
+    json_file_path = "questionnaire_result.json"
 
     with open(json_file_path, 'r') as j:
          new_obs_data = json.loads(j.read())
@@ -49,7 +51,7 @@ def recommend(output_file=False, output_path='data/json_output.json'):
 
     # Load in the model from a saved bin file, then read in the game data adn combine it with the passed in data.
     print("Loading in model and get recommended items...", file=sys.stdout)
-    df_items  = pd.read_csv('data/game_info_750.csv')
+    df_items  = pd.read_csv('game_info_750.csv')
     rec_items = MODEL.recommend_from_interactions(new_obs_data_new, k=50)
     
     # Select 50 recommended games' info.
@@ -66,8 +68,8 @@ def recommend(output_file=False, output_path='data/json_output.json'):
     # Output the top 5 games.
     output        = df_rec_items.loc[df_rec_items['game_id'].isin(df_items_filter.game_id)].sort_values('score', ascending=False).head(5)
     json_output   = json.dumps({"game_id": list(output["game_id"]), "score": list(output["score"])})
-    if output_file:
-        open(output_path, "w").write(json_output) # Write out json to a file to read in later.
+    # if output_file:
+    #     open(output_path, "w").write(json_output) # Write out json to a file to read in later.
     return json_output
 
 
@@ -81,31 +83,35 @@ def index():
 def product():
     return render_template("product.html")
 
+
 @app.route("/bgguser", methods=['GET'])
 def bgguser():
     print("Response: " + request.json, file=sys.stdout)
     return Response(status=200)
 
-@app.route("/questionnaire", methods=['GET'])
-def questionnaire():
-    print("Response: " + request.json, file=sys.stdout)
-    return Response(status=200)
+
+# @app.route("/questionnaire", methods=['GET'])
+# def questionnaire():
+#     print("Response: " + request.json, file=sys.stdout)
+#     return Response(status=200)
+
 
 # TODO find more efficient way of using json_output from recommend method to read in the data.
-@app.route("/results", methods=['GET'])
-def results():
-    output_path = 'data/json_output.json'
-    json_output = recommend(output_file=True, output_path=output_path)
-    with open(output_path, 'r') as j:
-         json_data = json.loads(j.read())
+@app.route("/questionnaire", methods=['GET'])
+def questionnaire():
+    json_output = recommend()
+    json_data   = json.loads(json_output)
 
-    # game_ids  = json_data['game_id']
-    # print("Game IDs: " + str(game_ids), file=sys.stdout)
-    # #return render_template("results.html")
-    # for id in game_ids:
-    #     print("ID: " + game_lookup(id), file=sys.stdout)
+    print("json_data: ", json_data, file=sys.stdout)
+    game_ids = json_data['game_id']
+    print("game_ids: ", game_ids, file=sys.stdout)
+    games_dict = {}
+    for id in game_ids:
+        game_data = game_lookup(id)
+        print("game_data: ", game_data, file=sys.stdout)
 
-    return json_data
+
+    return render_template("questionnaire.html", in_data=game_ids)
 
 # Main
 if __name__ == '__main__':

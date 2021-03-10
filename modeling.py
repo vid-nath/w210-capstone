@@ -64,7 +64,7 @@ name = model_name
 
 if str(sys.argv[1]) == "MIN":
     print("\nMinifying data...")
-    prune_pct  = 0.35
+    prune_pct  = 0.275
     prune_data(prune_pct=prune_pct)
     print("Changing train_path and model name...")
     path = 'data/training_data_minified.csv'
