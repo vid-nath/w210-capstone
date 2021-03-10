@@ -8,6 +8,7 @@ from flask_cors import CORS
 
 import json
 import os
+import pandas as pd
 import sys
 import turicreate as tc
 
@@ -38,12 +39,14 @@ def recommend():
                                   "play_time_min": [new_obs_data["play_time"]["min"]],
                                   "play_time_max": [new_obs_data["play_time"]["max"]]})
 
-    model = load_model()
+    model    = load_model()
+    df_items = pd.read_csv('data/game_info_750.csv')
+
     
-    recommend_items = model.rec_model.recommend_from_interactions(new_obs_data_new, k=50)
+    recommend_items = model.recommend_from_interactions(new_obs_data_new, k=50)
     
     # Select 50 recommended games' info.
-    df_rec_game_info = model.df_items.loc[model.df_items['game_id'].isin(recommend_items['game_id'])]
+    df_rec_game_info = df_items.loc[df_items['game_id'].isin(recommend_items['game_id'])]
     
     # Filter out game based on user answers.
     df_items_filter = df_rec_game_info[(df_rec_game_info['age_min']  > filter_condt['age_min'])       &
@@ -60,10 +63,9 @@ def recommend():
 
 
 # Page redirects.
-@app.route("/", methods=['GET'])
+@app.route("/")
 def index():
-    json_data = recommend()
-    return render_template("index.html", table=json_data)
+    return render_template("index.html")
 
 @app.route("/product")
 def product():
@@ -73,25 +75,11 @@ def product():
 @app.route("/results", methods=['GET'])
 def results():
     json_data = recommend()
+    game_ids  = json_data['game_id']
+    #return render_template("results.html")
     return json_data
-
-#APP_FOLDER = os.path.dirname(os.path.realpath(__file__))
 
 # Main
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
 
-
-"""
-TODO: 
-- Clean up recommend code:
-    - Remove data processing and data folders
-    - Update game_rec_model folder with the one from main repo
-    - Redeploy and test on heroku
-- Setup webhooks with Flask and Typeform
-    - Capture output json from model and from Typeform submit
-    - Integrate Typeform results processing
-
-- Copy over the current webform onto the ischool domain and fix up site there for "live hosting"
-
-"""

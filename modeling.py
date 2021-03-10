@@ -5,7 +5,6 @@
 # Here we ingest the cleaned data (via an IPython Notebook) and run it through the pipeline for training, testing, validating, and saving our model. Additionally, this pipeline will intake and apply user data to load models for recommendations.
 # Note: This code should only be run once since it will generate the model used everywhere else in the code.
 
-import boto3
 import os
 import sys
 import pandas as pd
@@ -16,7 +15,7 @@ import turicreate as tc
 train_path = 'data/training_data_3column_750.csv'
 info_path  = 'data/game_info_750.csv'
 model_name = 'game_rec_model_full'
-github_upload_limit_bytes = 85.0 * 1024 * 1024 # 80 mb * 1024 kb/mb * 1024 b/kb - this estimates lower than 100 hard limit
+github_upload_limit_bytes = 95.0 * 1024 * 1024 # 95 mb * 1024 kb/mb * 1024 b/kb - this estimates lower than 100 hard limit
 
 
 
@@ -44,14 +43,11 @@ def prune_data(path=train_path, prune_pct=0.1):
 # Method to model the data and save the model.
 def model_data(path=train_path, name=model_name):
     print("\nRunning modeling with path: " + path + " and name: " + name)
-    actions  = tc.SFrame.read_csv(path)
-    items    = tc.SFrame.read_csv(path)
-    df_items = pd.read_csv(info_path)
+    actions = tc.SFrame.read_csv(path)
 
     print("Filtering data")
-    actions       = actions[['game_id','user_id','rating']]
-    model         = tc.recommender.item_similarity_recommender.create(actions,'user_id','game_id',target='rating',similarity_type='cosine')
-    similar_items = model.get_similar_items([1,3],k=5)
+    actions = actions[['game_id','user_id','rating']]
+    model   = tc.recommender.item_similarity_recommender.create(actions, 'user_id', 'game_id', target='rating', similarity_type='cosine')
 
     # Save the model.
     print("Saving the model to:", name)
