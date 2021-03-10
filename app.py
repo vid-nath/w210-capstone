@@ -17,12 +17,14 @@ CORS(app)
 
 
 # Setup file-wide variables.
-MODEL_PATH = 'game_rec_model_min'
-MODEL      = tc.load_model(MODEL_PATH)
-GAME_INFO  = pd.read_csv('data/game_info_full.csv')
+MODEL_PATH  = 'game_rec_model_min'
+MODEL       = tc.load_model(MODEL_PATH)
+#GAME_INFO   = pd.read_csv('data/game_info_full.csv')
+#GAME_LOOKUP = pd.read_csv('data/game_lookup.csv')
 
-def game_lookup(inId):
-    return GAME_INFO[GAME_INFO.game_id == inId]
+# def game_lookup(inId):
+#     game_data = GAME_LOOKUP[GAME_LOOKUP.game_id == inId]
+#     return game_data['game_id'][0]
 
 
 # Recommend method to clean and provide the recommended values.
@@ -95,11 +97,11 @@ def results():
     with open(output_path, 'r') as j:
          json_data = json.loads(j.read())
 
-    game_ids  = json_data['game_id']
-    print("Game IDs: " + str(game_ids), file=sys.stdout)
-    #return render_template("results.html")
-
-    # Test out the game input
+    # game_ids  = json_data['game_id']
+    # print("Game IDs: " + str(game_ids), file=sys.stdout)
+    # #return render_template("results.html")
+    # for id in game_ids:
+    #     print("ID: " + game_lookup(id), file=sys.stdout)
 
     return json_data
 
