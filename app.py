@@ -3,7 +3,7 @@
 ## Flask App
 # This is where Flask handles the data from the recommendation engine and passes it around the site to the correct location
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, Response
 from flask_cors import CORS
 
 import json
@@ -81,13 +81,15 @@ def index():
 def product():
     return render_template("product.html")
 
-@app.route("/bgguser")
+@app.route("/bgguser", methods=['GET'])
 def bgguser():
-    return render_template("bgguser.html")
+    print("Response: " + request.json, file=sys.stdout)
+    return Response(status=200)
 
-@app.route("/questionnaire")
+@app.route("/questionnaire", methods=['GET'])
 def questionnaire():
-    return render_template("questionnaire.html")
+    print("Response: " + request.json, file=sys.stdout)
+    return Response(status=200)
 
 # TODO find more efficient way of using json_output from recommend method to read in the data.
 @app.route("/results", methods=['GET'])
