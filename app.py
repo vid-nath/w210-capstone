@@ -17,7 +17,7 @@ CORS(app)
 
 
 # Setup file-wide variables.
-MODEL_PATH = 'game_rec_mdoel_min'
+MODEL_PATH = 'game_rec_model_min'
 MODEL      = tc.load_model(MODEL_PATH)
 GAME_INFO  = pd.read_csv('data/game_info_full.csv')
 
@@ -80,11 +80,11 @@ def product():
     return render_template("product.html")
 
 @app.route("/bgguser")
-def product():
+def bgguser():
     return render_template("bgguser.html")
 
 @app.route("/questionnaire")
-def product():
+def questionnaire():
     return render_template("questionnaire.html")
 
 # TODO find more efficient way of using json_output from recommend method to read in the data.
