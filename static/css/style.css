@@ -1,0 +1,175 @@
+.nav-item {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+#boardgame-id,
+#guru-id {
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.boardgame-class {
+  color: #688cc4;
+}
+
+.guru-class {
+  color: #c4a068;
+}
+
+.button-text {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.section-class {
+  padding: 4rem 1rem;
+}
+
+.section.is-medium {
+  padding: 9rem 1.5rem;
+}
+
+.team-members {
+  background-color: #ececec;
+}
+
+.img-class {
+  height: auto;
+  max-width: 100%;
+  border-radius: 50px;
+}
+
+
+.hero-class {
+  min-height: 900px;
+  background: url(../img/games/miniatures.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #cbead6;
+}
+
+.product-info {
+  padding-top: 1em;
+  max-height: 240px;
+  background-color: #dfffe8;
+  background: url(../img/games/board-game-2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-grow: 1;
+}
+
+.team-info {
+  min-height: 240px;
+  background-color: #eeffff;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-grow: 1;
+}
+
+.hero-main.hero-body {
+  padding-bottom: 10;
+}
+
+.hero-main h1 {
+  margin-top: 30%;
+  margin-bottom: 5px;
+  color: #f5f8f5;
+}
+
+.column {
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 0.75rem;
+}
+
+.columns:not(.is-desktop) {
+  display: flex;
+}
+.columns:last-child {
+  margin-bottom: 50px;
+}
+.columns-class {
+  margin-top: 10px;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+  margin-top: -0.75rem;
+}
+
+.h1-class {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 64px;
+  
+}
+
+.h2-class {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 72px;
+  color: #102d2d;
+}
+
+p.body1 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #f5f8f5;
+}
+
+p.body2 {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 30px;
+  color: #2d1010;
+}
+
+.main-features {
+  min-height: 900px;
+  background-color: #cbead6;
+  color: #f5f8f5;
+  max-height: 760px;
+}
+
+.section-features.container {
+  flex-grow: 1;
+  margin-bottom: 100;
+  position: relative;
+  max-width: 100%;
+}
+
+.section-features h3 {
+  color: #1b1b1b;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 32px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.columns-class {
+  max-width: 100%;
+}
+
+.column-picture {
+  width: 360px;
+  height: 300px;
+}
+
+.columns-top {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.typeform-class {
+  background-color: darkslateblue;
+}
+
+#typeform-form {
+  background-color: darkslateblue;
+  margin: 0 auto;
+  width: auto;
+  height: 1096px;
+}
