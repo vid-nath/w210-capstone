@@ -1,183 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Mosaddek">
-    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+<html>
 
-    <title>Board Game Guru</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="shortcut icon" href="img/favicon.png">
+  <script src="https://kit.fontawesome.com/8fceb8cf4c.js" crossorigin="anonymous"></script> <!-- Font Awesome Kit -->
+</head>
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,500i,600,700&display=swap" rel="stylesheet"/>
-    <link rel="shortcut icon" href="#">
+<body class="index has-navbar-fixed-top">
 
-    <!-- Bootstrap core CSS -->
-    <link href="static/css/flatlab/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/flatlab/bootstrap-reset.css" rel="stylesheet">
-
-    <!--external css-->
-    <link href="static/assets/flatlab/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="static/assets/flatlab/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-    <link rel="stylesheet" href="static/css/flatlab/owl.carousel.css" type="text/css">
-
-    <!--right slidebar-->
-    <link href="static/css/flatlab/slidebars.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="static/css/flatlab/style.css" rel="stylesheet">
-    <link href="static/css/flatlab/style-responsive.css" rel="stylesheet" />
-    <link href="static/css/scorecard/animate.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="static/css/scorecard/custom-flatlab.css" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/scorecard/style.css">
-    <link rel="stylesheet" href="static/css/scorecard/search.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css">
-    <link href="static/assets/icomoon/css/icomoon.css" rel="stylesheet">
-  </head>
-
-  <body class="light-sidebar-nav">
-  <section id="container">
-
-    <!--header start-->
-    <header class="header white-bg card-shadow-light">     
-      <!--logo start-->
-      <a href="." class="logo" style='font-size: 32px;'>Board Game<span> Guru</span></a>
-      <div class="top-nav ">
-        <ul class="nav pull-left top-menu">
-            <li>
-              <a class="" href="product">             
-                <span style='font-size: 32px;'>Our Product</span>
-              </a>
-            </li>
-            <!--
-            <li>
-              <a class="" href="process">
-                <span style='font-size: 32px;'>Our Process</span>
-              </a>
-            </li>
-            <li>
-              <a class="" href="people">
-                <span style='font-size: 32px;'>Our People</span>
-              </a>
-            </li>     
-          -->     
-        </ul>        
-        <!--search & user info start-->
-        <ul class="nav pull-right top-menu">
-          <li class="sb-toggle-right">
-          </li>
-        </ul>
+  <!-- Start navbar -->
+  <nav class="navbar is-fixed-top">
+    <div class="navbar-brand">
+      <a href="index" class="navbar-item"><span id="boardgame-id" class="boardgame-class">BoardGame</span><span id="guru-id" class="guru-class">GURU</span></a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item nav-item" href="product">Take Survey</a>
+        <a class="navbar-item nav-item" href="bgguser">Use BGG Account</a>
+        <a class="navbar-item nav-item" href="people">About</a>
+        <span class="navbar-item nav-item">
+          <a class="button is-info" href="https://github.com/vid-nath/w210-capstone"><i class="fa fa-github">&nbsp;</i><span class="button-text"> Repo</span>
+          </a>
+        </span>
       </div>
-    </header>
-    <!--header end-->
+    </div>
+  </nav>
+  <!-- End navbar -->
 
-
-    <!--sidebar start-->
-    <!--sidebar end-->
-
-    <!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-
-        <div id="home-page-content">
-          <div class="card custom-overview animated fadeIn card-shadow-light">
-            <div class="card-body" style='font-size:28px; text-align: center;'>
-              The <span style="font-weight:600">Board Game Guru</span> is a brand new tool to help solve all of your board game needs. Our intuitive and interactive process takes in reviews from <span color='blue'>thousands</span> of games and applies machine learning and natural language processing to find <strong>exactly</strong> the board that you are looking.
-            </div>
+  <!-- Start Index Product Section -->
+  <section class="hero hero-main hero-class">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-three-fifths">
+            <h1 class="h1-class">Discover Something New</h1>
+            <p class="body1">Explore the vast world of board games with just a few clicks.</p>
+            <p><br>
+              <button class="button button-white is-primary is-inverted">
+                <a href="product">Take Survey &nbsp;</a><i class="fa fa-arrow-right is-primary"></i>
+              </button>
+            </p>
+            <br>
+            <p class="body1">Have a <a href="https://boardgamegeek.com/" target="_blank">BoardGameGeek.com</a> account?</p>
+            <p><br>
+              <button class="button button-white is-primary is-inverted">
+                <a href="bgguser">Integrate BGG.com account &nbsp;</a><i class="fa fa-arrow-right is-primary"></i>
+              </button>
+            </p>
           </div>
-          <div class="row animated fadeInDown delay-1s" style="justify-content:center;margin-bottom:10px">
-            <img src="https://cottagelife.com/wp-content/uploads/2018/06/shutterstock_135000779-1200x840.jpg">
-          </div>
-
-          <div class="row" style="justify-content:center;margin-bottom:10px">
-            <div class="col-profile-nav col-lg-3 col-md-12 animated fadeInDown delay-2s">
-              <aside class="profile-nav alt card-shadow">
-                <section class="panel">
-                  <a href="product" class="panel">
-                    <div class="user-heading alt bg-white">
-                      <h3>Check Out Our Product</h3>
-                      <div class="summary-description"><h4>Find new games thanks to our Board Game Guru engine.</h4></div>
-                      <img  src="static/img/overview/board-game.jpg" alt="Summary view">
-                    </div>    
-                    <a href="product" class="btn btn-default btn-white btn-block" >Go</a>
-                  </a>
-                </section>
-              </aside>
-            </div>
-            
-            <!--
-            <div class="col-profile-nav col-lg-3 col-md-12 animated fadeInDown delay-3s">
-              <aside class="profile-nav alt card-shadow">
-                <a href="process" class="panel">
-                  <div class="user-heading alt bg-white" >
-                    <h3>Discover How It Works</h3>
-                    <div class="summary-description"><h4>Take a deep-dive into the math behind our modeling.</h4></div>
-                    <!--img  src="static/img/overview/Board-Games1.jpg" alt="Segment view"--
-                  </div>
-    
-                  <a href="process" class="btn btn-default btn-white btn-block">Go</a>
-                </a>
-              </aside>
-            </div>
-    
-            <div class="col-profile-nav col-lg-3 col-md-12 animated fadeInDown delay-4s">
-              <aside class="profile-nav alt card-shadow">
-                <a href="people" class="panel">
-                  <div class="user-heading alt bg-white">
-                    <h3>Meet Our Team</h3>
-                    <div class="summary-description"><h4>See the people responsible for the product.</h4></div>
-                    <!--img  src="static/img/overview/BoardGame.jpg" alt="Segment view"--
-                  </div>
-    
-                  <a href="people" class="btn btn-default btn-white btn-block" >Go</a>
-                </a>
-              </aside>
-            </div>
-          </div>-->
-
         </div>
-      </section>
-    </section>
-    <!--main content end-->
+      </div>
+    </div>
   </section>
+  <!-- End Index Product Section -->
 
-    <!-- js placed at the end of the document so the pages load faster -->
-    <script src="static/js/flatlab/jquery.js"></script>
-    <script src="static/js/flatlab/bootstrap.bundle.min.js"></script>
-    <script class="include" type="text/javascript" src="static/js/flatlab/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="static/js/flatlab/jquery.scrollTo.min.js"></script>
-    <script src="static/js/flatlab/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="static/js/flatlab/jquery.sparkline.js" type="text/javascript"></script>
-    <script src="static/assets/flatlab/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-    <script src="static/js/flatlab/owl.carousel.js" ></script>
-    <script src="static/js/flatlab/jquery.customSelect.min.js" ></script>
-    <script src="static/js/flatlab/respond.min.js" ></script>
+  <!-- Start Features Section -->
+  <section class="section-features">
+    <div class="container">
+      <div class="columns columns-class is-centered">
+        <div class="column is-one-third has-text-centered">
+          <a class="box columns-top" href="product"> <img class="column-picture" src="../static/img/surveypic.jpg">
+            <h3>Discover New Games to Play!</h3>
+            <p class="body2">Take a 5-minute survey and find new games tailored to you</p>
+          </a>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <a class="box columns-top" href="bgguser"> <img class="column-picture" src="../static/img/bggeek_logo.png">
+            <h3>Use a Board Game Geek Account!</h3>
+            <p class="body2">Connect your account for quicker recommendations</p>
+          </a>
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <a class="box columns-top" href="people"> <img class="column-picture" src="../static/img/mids-logo.png">
+            <h3>Learn About Our Team and Process!</h3>
+            <p class="body2">Get to meet the engineers behind the magic</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Features Section -->
 
-    <!--right slidebar-->
-    <script src="static/js/flatlab/slidebars.min.js"></script>
+  <!-- Start footer -->
+  <footer class="content footer">
+    <div class="has-text-centered level-left">
+      <p>
+        <span class="boardgame-class">BoardGame</span><span class="guru-class">Guru</span> project by <a href="mailto: sjdong@ischool.berkeley.com">Shujing Dong</a>, <a href="mailto: vid.nath@ischool.berkeley.com">Vidhu Nath</a>, <a href="mailto: mike.shum@ischool.berkeley.com">Mike Shum</a>, and <a href="mailto: anuyadav@ischool.berkeley.com">Anu Yadav</a>. The website content is licensed by the MIT Open License
+      </p>
+    </div>
+  </footer>
+  <!-- End footer -->
+</body>
 
-    <!--common script for all pages-->
-    <script src="static/js/flatlab/common-scripts.js"></script>
-
-    <script src="static/js/flatlab/count.js"></script>
-
-    <!--script for this page only-->
-    <script type="text/javascript" src="static/js/flatlab/jquery.pulsate.min.js"></script>
-    <script src="static/js/flatlab/pulstate.js" type="text/javascript"></script>
-
-
-  <script>
-
-      $(function() {
-          $('select.styled').customSelect();
-      });
-  </script>
-
-  <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.js"></script>
-  <script src="https://d3js.org/d3-color.v1.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js" integrity="sha256-gh5oDg46rxRDr9QF4nehk1UNULQ05EhbM9wOerElwRc=" crossorigin="anonymous"></script>
-  </body>
 </html>
