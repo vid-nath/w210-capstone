@@ -50,13 +50,21 @@
 }
 
 .product-info {
-  padding-top: 1em;
+  padding-top: 1.5em;
   max-height: 240px;
   background-color: #dfffe8;
   background: url(../img/games/board-game-2.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   flex-grow: 1;
+}
+
+.product-info.container {
+  flex-grow: 1;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  max-width: 100%;
 }
 
 .team-info {
@@ -102,6 +110,7 @@
   font-size: 40px;
   font-weight: 700;
   line-height: 64px;
+  margin-top: 20px;
   
 }
 
@@ -110,6 +119,7 @@
   font-weight: 600;
   line-height: 72px;
   color: #102d2d;
+  margin-top: 40px;
 }
 
 p.body1 {
@@ -135,7 +145,8 @@ p.body2 {
 
 .section-features.container {
   flex-grow: 1;
-  margin-bottom: 100;
+  margin-top: 100px;
+  margin-bottom: 100px;
   position: relative;
   max-width: 100%;
 }

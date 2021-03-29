@@ -119,7 +119,7 @@ Returns: dict of responses with the following fields:
 """
 def get_quest_survey_answers(json_data):
     d = {"survey" : "questionnaire"}    
-    d['id'] = json_data['event_id']
+    #d['id'] = json_data['event_id']
     d['age'] = player_age_response(json_data['form_response']['answers'][0]['choice']['label'])
     d['num_players'] = player_num_response(json_data['form_response']['answers'][1]['choice']['label'])
     d['play_time'] = player_time_response(json_data['form_response']['answers'][2]['choice']['label'])    

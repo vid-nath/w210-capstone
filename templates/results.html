@@ -31,69 +31,34 @@
   </nav>
   <!-- End navbar -->
 
-  <!-- Start Product Introduction -->
+  <!-- Start Results Introduction -->
   <section class="section-class team-info">
     <div class="container">
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h2 class="h2-class">Here are your results!</h2>
-          <p class="body2">Check out these board games</p>
+          <p class="body2">Check out the following board games!</p>
         </div>
       </div>
     </div>
   </section>
-  <!-- End Product Introduction-->
+  <!-- End Results Introduction -->
 
-  <!-- Start Team introduction -->
-  <section class="team-members is-medium">
+  <!-- Start Results Output -->
+  <section class="section-class team-info">
     <div class="container">
-      <div class="columns">
-        <div class="column">
-          <div class="columns">
-            <div class="column is-2"> <img class="img-class" src="../static/img/people/shujing_dong.png"></div>
-            <div class="column">
-              <blockquote>
-                <strong><span class="boardgame-class">Shujing </span><span class="guru-class">Dong</span><strong>
-              </blockquote>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="columns">
-            <div class="column is-2"> <img class="img-class" src="../static/img/people/vidhu_nath.jpeg"></div>
-            <div class="column">
-              <blockquote>
-                <strong><span class="boardgame-class">Vidhu </span><span class="guru-class">NATH</span><strong>
-              </blockquote>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column">
-          <div class="columns">
-            <div class="column is-2"> <img class="img-class" src="../static/img/people/mike_shum.png"></div>
-            <div class="column">
-              <blockquote>
-                <strong><span class="boardgame-class">Mike </span><span class="guru-class">SHUM</span><strong>
-            </blockquote>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="columns">
-            <div class="column is-2"> <img class="img-class" src="../static/img/people/anu_yadav.jpeg"></div>
-            <div class="column">
-              <blockquote>
-                <strong><span class="boardgame-class">Anu </span><span class="guru-class">Yadav</span><strong>
-              </blockquote>
-            </div>
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <div id="resultsTable">
+            <!-- ADD RESULTS TABLE HERE -->
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- End team introduction -->
+  <!-- End Results Output -->
+
+
 
   <!-- Start footer -->
   <footer class="content footer">
@@ -104,6 +69,14 @@
     </div>
   </footer>
   <!-- End footer -->
+
+  <!-- Scripts -->
+  <script type="text/javascript">
+    var target = document.getElementById("resultsTable");
+    var data = '{{ inData }}';
+    console.log('{{ inData }}');
+    target.innerHTML += '{{ inData }}';
+  </script>
 </body>
 
 </html>

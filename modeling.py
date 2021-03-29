@@ -14,32 +14,31 @@ import turicreate as tc
 
 train_path = 'data/training_data_3column_750.csv'
 info_path  = 'data/game_info_750.csv'
-model_name = 'game_rec_model_full'
+model_name = 'game_rec_model'
 github_upload_limit_bytes = 95.0 * 1024 * 1024 # 95 mb * 1024 kb/mb * 1024 b/kb - this estimates lower than 100 hard limit
 
-
-
+## OBE
 # Method to prune data down to a percentage of the original.
-def prune_data(path=train_path, prune_pct=0.1):
-    print("\nPruning csv data from:", path)
-    full_data = pd.read_csv(path)
-    print(full_data.describe)
+# def prune_data(path=train_path, prune_pct=0.1):
+#     print("\nPruning csv data from:", path)
+#     full_data = pd.read_csv(path)
+#     print(full_data.describe)
 
-    max_pct     = 100.0
-    prune_limit = int(max_pct * prune_pct) # Nominally 10 -> 10% of data    
-    print("Pruning data with limit:", str(prune_limit))
+#     max_pct     = 100.0
+#     prune_limit = int(max_pct * prune_pct) # Nominally 10 -> 10% of data    
+#     print("Pruning data with limit:", str(prune_limit))
 
-    min_data     = full_data[full_data.index % max_pct < prune_limit]
-    print(min_data.describe)
+#     min_data     = full_data[full_data.index % max_pct < prune_limit]
+#     print(min_data.describe)
     
-    min_data_mem_size_bytes = min_data.memory_usage(index=True).sum()
-    print("Data within limits:", str(min_data_mem_size_bytes < github_upload_limit_bytes))
+#     min_data_mem_size_bytes = min_data.memory_usage(index=True).sum()
+#     print("Data within limits:", str(min_data_mem_size_bytes < github_upload_limit_bytes))
     
-    # Save the data to a csv.
-    min_data.to_csv('data/training_data_minified.csv')
+#     # Save the data to a csv.
+#     min_data.to_csv('data/training_data_minified.csv')
 
 
-
+# Need to do only once, ideally, or everytime underlying data is updated.
 # Method to model the data and save the model.
 def model_data(path=train_path, name=model_name):
     print("\nRunning modeling with path: " + path + " and name: " + name)
@@ -56,19 +55,19 @@ def model_data(path=train_path, name=model_name):
 
 
 # Main execution.
-print("System arguments:", str(sys.argv))
+#print("System arguments:", str(sys.argv))
 
 # Minify the data.
 path = train_path
 name = model_name
 
-if str(sys.argv[1]) == "MIN":
-    print("\nMinifying data...")
-    prune_pct  = 0.275
-    prune_data(prune_pct=prune_pct)
-    print("Changing train_path and model name...")
-    path = 'data/training_data_minified.csv'
-    name = 'game_rec_model_min'
+# if str(sys.argv[1]) == "MIN":
+#     print("\nMinifying data...")
+#     prune_pct  = 0.275
+#     prune_data(prune_pct=prune_pct)
+#     print("Changing train_path and model name...")
+#     path = 'data/training_data_minified.csv'
+#     name = 'game_rec_model_min'
 
 # Model the data.
 if str(sys.argv[2]) == "MODEL":

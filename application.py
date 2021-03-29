@@ -8,9 +8,11 @@ from flask import Flask, request, abort, render_template, Response, jsonify, mak
 
 import json
 import os
+from flask.templating import render_template_string
 import pandas as pd
 import sys
 from webhook_handler import get_bgg_survey_answers, get_quest_survey_answers
+from recommender import recommender
 #import turicreate as tc
 
 
@@ -38,29 +40,35 @@ def bgguser():
 def people():
     return render_template("people.html")
 
-@application.route("/result")
-def result():
-    return render_template("result.html")
+@application.route("/results")
+def results():
+    # This is something that sort of works - need to figure out how to embed html via flask into the html page.
+    # results = pd.read_json('data/json_test_output.json')
+    # resHtml = results.to_html(render_links=True, justify='center')
+    return render_template("results.html") #, inData=results)
 
-#BGG integration webhook handling
-@app.route("/bgguserwebhook", methods=['POST'])
+# BGG integration webhook handling
+@application.route("/bgguserwebhook", methods=['POST'])
 def bgguserwebhook():
-     if request.method == 'POST':
-         bgg_json = request.get_json()
-         bgguser_result = get_bgg_survey_answers(bgg_json)
-         #res = make_response(jsonify(bgguser_result), 200)
-         res = make_response(bgguser_result, 200)
-         return res
-     else:
-         abort(400)
+    print(request)
+    if request.method == 'POST':
+        bgg_json = request.get_json()
+        bgguser_result = get_bgg_survey_answers(bgg_json)
+        #res = make_response(jsonify(bgguser_result), 200)
+        res = make_response(bgguser_result, 200)
+        return res
+    else:
+        abort(400)
 
-#Questionnaire webhook handling
-@app.route("/questionnairewebhook", methods=['POST'])
+# Questionnaire webhook handling
+@application.route("/questionnairewebhook", methods=['GET','POST'])
 def questionnairewebhook():
      if request.method == 'POST':
-         survey_json = request.get_json()
-         survey_result = get_quest_survey_answers(survey_json)         
-         res = make_response(survey_result, 200)
+         survey_json = request.get_json(force=True)
+         survey_result = get_quest_survey_answers(survey_json)
+         print('survey_result',survey_result)
+         recommend_game= recommender(survey_result)
+         res = make_response(recommend_game, 200)
          return res
      else:
          abort(400)
