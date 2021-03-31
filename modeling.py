@@ -30,7 +30,9 @@ def prune_data(path=train_path, prune_pct=0.1):
     min_data     = full_data[full_data.index % max_pct < prune_limit]
     print(min_data.describe)
     
+    # Check against github limits.
     min_data_mem_size_bytes = min_data.memory_usage(index=True).sum()
+    github_upload_limit_bytes = 95.0 * 1024 * 1024 # 95 mb * 1024 kb/mb * 1024 b/kb - this estimates lower than 100 hard limit
     print("Data within limits:", str(min_data_mem_size_bytes < github_upload_limit_bytes))
     
     # Save the data to a csv.
