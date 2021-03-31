@@ -1,5 +1,6 @@
 import json
 import csv
+import pandas as pd
 import turicreate as tc
 '''
 recommend based on games provided in questionnaire and filter recommended games by questionnaire answers,
@@ -7,12 +8,13 @@ input: json file get from webhook
 output: json with game_id and confidence_score 
 '''
 
-
 def recommender(dataset):
-    #MODEL_PATH  = 'game_rec_model_2k'
-    MODEL_PATH  = 'game_rec_model'
-    MODEL       = tc.load_model(MODEL_PATH)
-    new_obs_data = json.loads(dataset)
+    MODEL_PATH    = 'game_rec_model'
+    MODEL         = tc.load_model(MODEL_PATH)
+    dataset_json  = json.dumps(dataset)
+    new_obs_data  = json.loads(dataset_json)
+
+    #print(new_obs_data.head(3))
     new_obs_data_new = [int(i) for i in list(new_obs_data["games"].keys())]
     filter_condt     = tc.SFrame({"age_min": [new_obs_data["age"]["min"]],
                                    "age_max": [new_obs_data["age"]["max"]],
@@ -22,7 +24,6 @@ def recommender(dataset):
                                    "play_time_max": [new_obs_data["play_time"]["max"]]})
 
      # Load in the model from a saved bin file, then read in the game data adn combine it with the passed in data.
-    print("Loading in model and get recommended items...", file=sys.stdout)
     df_items  = pd.read_csv('data/game_info_750.csv')
     rec_items = MODEL.recommend_from_interactions(new_obs_data_new, k=50)
     

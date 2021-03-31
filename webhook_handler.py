@@ -92,6 +92,8 @@ Returns: dict of responses with the following fields:
     - games: dict of games the player likes in the form of game_id : game_name (both strings)
 """
 def get_bgg_survey_answers(json_data):
+    json_data = json_data['body']
+    
     d = {"survey" : "bgg_user"}
     d['id'] = json_data['event_id']
     user_id = json_data['form_response']['answers'][0]['text']    
@@ -118,8 +120,10 @@ Returns: dict of responses with the following fields:
     - games: dict of games the player likes in the form of game_id : game_name (both strings)
 """
 def get_quest_survey_answers(json_data):
+    json_data = json_data['body']
+
     d = {"survey" : "questionnaire"}    
-    #d['id'] = json_data['event_id']
+    d['id'] = json_data['event_id']
     d['age'] = player_age_response(json_data['form_response']['answers'][0]['choice']['label'])
     d['num_players'] = player_num_response(json_data['form_response']['answers'][1]['choice']['label'])
     d['play_time'] = player_time_response(json_data['form_response']['answers'][2]['choice']['label'])    
@@ -133,7 +137,7 @@ def get_quest_survey_answers(json_data):
             game_title.append(row[0])
             game_id.append(row[1])
     quest_games_lookup_dict = {game_title[i]: game_id[i] for i in range(len(game_id))}
-    
+
     game_list = {}    
     for i in range(3, 9):
         game_title = json_data['form_response']['answers'][i]['choice']['label']
