@@ -45,7 +45,12 @@ def results():
     # This is something that sort of works - need to figure out how to embed html via flask into the html page.
     # results = pd.read_json('data/json_test_output.json')
     # resHtml = results.to_html(render_links=True, justify='center')
-    return render_template("results.html") #, inData=results)
+    #return "Hello"
+    with open("data/json_test_output.json", "r") as f:
+        data = json.load(f)
+    data = list(zip(data['game_id'], data['score']))
+    #data = ["A", "B"]
+    return render_template("results.html", data=data) #, inData=results)
 
 
 # BGG integration webhook handling
