@@ -50,7 +50,19 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <div id="resultsTable">
-            <!-- ADD RESULTS TABLE HERE -->
+            <table>
+              <th>
+                <td>Game ID</td><td>Score</td>
+              </th>
+              <tbody>
+
+            {% for v in data %}
+                <tr>
+              <td>{{ v[0] }}</td> <td>{{ v[1] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          </table>
           </div>
         </div>
       </div>
