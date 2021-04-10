@@ -10,11 +10,11 @@
 }
 
 .boardgame-class {
-  color: #688cc4;
+  color: #9C528B;
 }
 
 .guru-class {
-  color: #c4a068;
+  color: #59656F;
 }
 
 .button-text {
@@ -43,17 +43,18 @@
 
 .hero-class {
   min-height: 900px;
-  background: url(../img/games/miniatures.jpg);
+  background: url(../img/games/coverdice.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #cbead6;
+  opacity: 0.9;
 }
 
 .product-info {
-  padding-top: 1.5em;
+  padding-top: 1.0em;
   max-height: 240px;
-  background-color: #dfffe8;
-  background: url(../img/games/board-game-2.jpg);
+  background-color: #fbeeff;
+  /*background: url(../img/games/board-game-2.jpg); */
   background-size: cover;
   background-repeat: no-repeat;
   flex-grow: 1;
@@ -68,11 +69,18 @@
 }
 
 .team-info {
-  min-height: 240px;
-  background-color: #eeffff;
+  min-height: 150px;
+  background-color: #fbeeff;
   background-size: cover;
   background-repeat: no-repeat;
   flex-grow: 1;
+}
+
+.bg-info {
+  min-height: 150px;
+  background-color: #fbeeff;
+  background-size: cover;
+  background-repeat: no-repeat;  
 }
 
 .hero-main.hero-body {
@@ -82,7 +90,7 @@
 .hero-main h1 {
   margin-top: 30%;
   margin-bottom: 5px;
-  color: #f5f8f5;
+  color: #424242;
 }
 
 .column {
@@ -118,22 +126,30 @@
   font-size: 36px;
   font-weight: 600;
   line-height: 72px;
-  color: #102d2d;
+  color: #9C528B;
   margin-top: 40px;
+}
+
+a:link {
+  color: #59656F;
+}
+
+a:visited {
+  color: #59656F;
 }
 
 p.body1 {
   font-size: 24px;
   font-weight: 600;
   line-height: 28px;
-  color: #f5f8f5;
+  color: #9C528B;
 }
 
 p.body2 {
   font-size: 22px;
   font-weight: 500;
   line-height: 30px;
-  color: #2d1010;
+  color: #59656F;
 }
 
 .main-features {
@@ -149,10 +165,11 @@ p.body2 {
   margin-bottom: 100px;
   position: relative;
   max-width: 100%;
+  background-color: #D7CDCC;
 }
 
 .section-features h3 {
-  color: #1b1b1b;
+  color: #9C528B;
   font-size: 28px;
   font-weight: 800;
   line-height: 32px;
