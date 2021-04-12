@@ -91,9 +91,7 @@ Returns: dict of responses with the following fields:
     - play_time: dict of playing time filters produced by player_time_response
     - games: dict of games the player likes in the form of game_id : game_name (both strings)
 """
-def get_bgg_survey_answers(json_data):
-    #json_data = json_data['body']
-    
+def get_bgg_survey_answers(json_data):    
     d = {"survey" : "bgg_user"}
     d['id'] = json_data['event_id']
     user_id = json_data['form_response']['answers'][0]['text']    
@@ -120,8 +118,6 @@ Returns: dict of responses with the following fields:
     - games: dict of games the player likes in the form of game_id : game_name (both strings)
 """
 def get_quest_survey_answers(json_data):
-    #json_data = json_data['body']
-
     d = {"survey" : "questionnaire"}    
     d['id'] = json_data['event_id']
     d['age'] = player_age_response(json_data['form_response']['answers'][0]['choice']['label'])

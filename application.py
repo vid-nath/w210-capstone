@@ -3,23 +3,34 @@
 ## Flask App
 # This is where Flask handles the data from the recommendation engine and passes it around the site to the correct location
 
-from flask import Flask, request, abort, render_template, Response, jsonify, make_response,session
-#from flask_cors import CORS
-
 import json
 import os
-import pandas as pd
-import sys
+
+from flask import Flask, request, redirect, url_for, abort, render_template, make_response, session
+
 from webhook_handler import get_bgg_survey_answers, get_quest_survey_answers
-import turicreate as tc
 from recommender import recommender
 from recommender_bgguser import recommender_bgguser
 
-# EB looks for an 'application' callable by default.
-application = app = Flask(__name__)
-#CORS(application)
 
-application.secret_key = 'w210'
+# EB looks for an 'application' callable by default.
+application = Flask(__name__)
+application.config.from_object(__name__)
+
+# Set a secret key for the session.
+key = os.urandom(24).hex()
+application.secret_key = key
+application.testing    = True
+
+
+# Output file location.
+surveyFileLoc  = '/tmp/survey_results.txt'
+bgguserFileLoc = '/tmp/bgguser_results.txt'
+newFile1       = open(surveyFileLoc, 'w')
+newFile1       = open(bgguserFileLoc, 'w')
+
+
+
 @application.route("/")
 def home():
     return render_template("index.html")
@@ -40,48 +51,86 @@ def bgguser():
 def people():
     return render_template("people.html")
 
-@application.route("/result")
-def result():
-    return render_template("result.html")
 
 
-@application.route("/results")
-def results():
-    # This is something that sort of works - need to figure out how to embed html via flask into the html page.
-    # results = pd.read_json('data/json_test_output.json')
-    # resHtml = results.to_html(render_links=True, justify='center')
-    #return "Hello"
-    recommend_game = session['recommend_game']
-    print("data passed to results function: ", recommend_game)
-    #data = ["A", "B"]
-    return render_template("results.html", data = recommend_game) #, inData=results)
+@application.route("/bgguserresults")
+def bggusersurveyresults():
+    print("LOADING BGGUSER RESULTS")
+    with open(bgguserFileLoc, 'r') as f:
+        print("READING IN TMP FILE:", f)
+        json_data = json.load(f)
+        
+    print("JSON_DATA:", json_data)
+    data = list(zip(json_data['game_name'], json_data['level']))
+    return render_template("surveyresults.html", data=data)
 
-#BGG integration webhook handling
-@application.route("/bgguserwebhook", methods=['POST'])
+
+# BGG integration webhook handling
+@application.route("/bgguserwebhook", methods=['GET','POST'])
 def bgguserwebhook():
-     if request.method == 'POST':
-         bgg_json = request.get_json()
-         bgguser_result = get_bgg_survey_answers(bgg_json)
-         recommend_game_bgguser= recommender_bgguser(bgguser_result)
-         res = make_response(recommend_game_bgguser, 200)
-         return res
-     else:
-         abort(400)
+    if request.method == 'POST':
+        print("GETTING BGGUSER RESULTS")
+        bgg_json       = request.get_json()
+        bgguser_result = get_bgg_survey_answers(bgg_json)
+        user_score     = recommender_bgguser(bgguser_result)
+        res            = make_response(user_score, 200)
 
-#Questionnaire webhook handling
+        # Write out to tmp file.
+        with open(bgguserFileLoc, 'w') as f:
+            print("WRITING SCORE:", user_score)
+            f.write(user_score)
+            print("OUTPUTFILE:", f)
+
+        return res
+
+    if request.method == 'GET':
+        print("REDIRECTING TO REDIRECT PAGE")
+        return render_template("bgguserredirect.html")
+        
+    else:
+        abort(400)
+
+
+@application.route("/surveyresults")
+def surveyresults():
+    print("LOADING SURVEY RESULTS")
+    with open(surveyFileLoc, 'r') as f:
+        print("READING IN TMP FILE:", f)
+        json_data = json.load(f)
+        
+    print("JSON_DATA:", json_data)
+    data = list(zip(json_data['game_name'], json_data['level']))
+    return render_template("surveyresults.html", data=data)
+
+
+# Questionnaire webhook handling - receives the responses then calls the model.
 @application.route("/questionnairewebhook", methods=['GET','POST'])
 def questionnairewebhook():
-     if request.method == 'POST':
-         survey_json = request.get_json()
-         survey_result = get_quest_survey_answers(survey_json)
-         recommend_game= recommender(survey_result)
-         session['recommend_game'] = recommend_game
-         res = make_response(recommend_game, 200)
-         return res
-     else:
-         abort(400)
-         
-# run the app.
+    if request.method == 'POST':
+        print("GETTING POST RESULTS")
+        survey_json    = request.get_json(force=True)
+        survey_result  = get_quest_survey_answers(survey_json)        
+        recommend_game = recommender(survey_result)
+        res            = make_response(recommend_game, 200)
+
+        # Write out to tmp file.
+        with open(surveyFileLoc, 'w') as f:
+            print("WRITING:", recommend_game)
+            f.write(recommend_game)
+            print("OUTPUTFILE:", f)
+
+        return res
+
+    if request.method == 'GET':
+        print("REDIRECTING TO REDIRECT PAGE")
+        return render_template("surveyredirect.html")
+        
+    else:
+        abort(400)
+
+
+
+# Run the app.
 if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.

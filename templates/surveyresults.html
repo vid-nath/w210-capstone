@@ -19,9 +19,9 @@
     </div>
     <div class="navbar-menu">
       <div class="navbar-end">
-        <a class="navbar-item nav-item is-active board-game-class" href="product">Take Survey</a>
+        <a class="navbar-item nav-item" href="product">Take Survey</a>
         <a class="navbar-item nav-item" href="bgguser">Use BGG Account</a>
-        <a class="navbar-item nav-item" href="people">About</a>
+        <a class="navbar-item nav-item is-active board-game-class" href="people">About</a>
         <span class="navbar-item nav-item">
           <a class="button is-info" href="https://github.com/vid-nath/w210-capstone"><i class="fa fa-github">&nbsp;</i><span class="button-text">Repo</span>
           </a>
@@ -31,28 +31,46 @@
   </nav>
   <!-- End navbar -->
 
-  <!-- Start Product Introduction -->
-  <section class="section-class product-info">
+  <!-- Start Results Introduction -->
+  <section class="section-class team-info">
     <div class="container">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h2 class="h2-class">Take Our Survey Below!</h2>
-          <p class="body2">Whether you're new to board games or a seasoned vet, take this quick survey to put your preferences into our deep learning powered recommendation engine.</p>
+          <h2 class="h2-class">Here are your results!</h2>
+          <p class="body2">Check out the following board games!</p>
         </div>
       </div>
     </div>
   </section>
+  <!-- End Results Introduction -->
 
-  <!-- End Product Introduction-->
-
-  <!-- Start Typeform -->
-  <section class="section-class">
+  <!-- Start Results Output -->
+  <section class="section-class team-info">
     <div class="container">
-      <div id="typeform-form"></div>
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <div id="resultsTable">
+            <table class="table is-striped is-hoverable">
+              <th>
+                <td>Game Name</td><td>Level</td>
+              </th>
+              <tbody>
+
+            {% for v in data %}
+                <tr>
+              <td>{{ v[0] }}</td> <td>{{ v[1] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+  <!-- End Results Output -->
 
-  <!-- End Typeform -->
+
 
   <!-- Start footer -->
   <footer class="content footer">
@@ -64,31 +82,13 @@
   </footer>
   <!-- End footer -->
 
-  <!-- Start scripts -->
-  <!-- Typeform embedding -->
-  <script src="https://embed.typeform.com/embed.js"></script>
+  <!-- Scripts -->
   <script type="text/javascript">
-
-    window.addEventListener("DOMContentLoaded", function() {
-      var el = document.getElementById("typeform-form");
-      
-      // When instantiating a widget embed, you must provide the DOM element
-      // that will contain your typeform, the URL of your typeform, and your
-      // desired embed settings
-      window.typeformEmbed.makeWidget(el, "https://5ztszofcviv.typeform.com/to/n7VAgSMX",
-      {
-        hideFooter: false,
-        hideHeaders: false,
-        opacity: 80,
-        onSubmit: function (event) 
-        {
-          // Redirect to the results page.
-          window.location.assign("questionnairewebhook")
-        }
-      });
-    });
+    var target = document.getElementById("resultsTable");
+    var data = '{{ inData }}';
+    console.log('{{ inData }}');
+    target.innerHTML += '{{ inData }}';
   </script>
-  <!-- End scripts -->
 </body>
 
 </html>
