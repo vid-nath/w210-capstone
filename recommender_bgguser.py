@@ -38,8 +38,11 @@ def recommender_bgguser(dataset):
     
 #     # Output the top 5 games.
     output = df_rec_items.loc[df_rec_items['game_id'].isin(df_items_filter.game_id)].sort_values('score', ascending=False).head(5)
+    output_name=df_items_filter[df_items_filter['game_id'].isin(output['game_id'])][['game_id','game_title']]
+    output=pd.merge(output,output_name, on='game_id')
+
     output['level'] = output['score'].where(~(output['score']>=9),"Extremely fits your taste ")
     output['level'] = output['level'].where(~((output['score']>=8)&(output['score']<9)),"Very much fits your taste")
     output['level'] = output['level'].where(~(output['score']<8),"Fits your taste")
-    json_output=json.dumps({"game_id": list(output["game_id"]), "level": list(output["level"])})
+    json_output=json.dumps({"game_id": list(output["game_id"]),"game_name": list(output["game_title"]), "level": list(output["level"])})
     return json_output
