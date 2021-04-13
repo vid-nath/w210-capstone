@@ -10,7 +10,8 @@ output: json with game_id and confidence_score
 
 
 def recommender(dataset):
-    MODEL_PATH  = 'game_rec_model_2k'
+    #MODEL_PATH  = 'game_rec_model_2k'
+    MODEL_PATH  = 'game_rec_model_2k_pearson'
     MODEL       = tc.load_model(MODEL_PATH)
     dataset_json=json.dumps(dataset)
     new_obs_data = json.loads(dataset_json)
@@ -43,8 +44,8 @@ def recommender(dataset):
     output_name=df_items_filter[df_items_filter['game_id'].isin(output['game_id'])][['game_id','game_title']]
     output=pd.merge(output,output_name, on='game_id')
 
-    output['level'] = output['score'].where(~(output['score']>=0.5),"Extremely Similar")
-    output['level'] = output['level'].where(~((output['score']>=0.4)&(output['score']<0.5)),"Very Similar")
-    output['level'] = output['level'].where(~(output['score']<0.4),"Similar")
+    output['level'] = output['score'].where(~(output['score']>=5),"Extremely Similar")
+    output['level'] = output['level'].where(~((output['score']>=4.5)&(output['score']<5)),"Very Similar")
+    output['level'] = output['level'].where(~(output['score']<4.5),"Similar")
     json_output=json.dumps({"game_id": list(output["game_id"]), "game_name": list(output["game_title"]),"level": list(output["level"])})
     return json_output
