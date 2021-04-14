@@ -2,6 +2,7 @@ absl-py==0.12.0
 astunparse==1.6.3
 attr==0.3.1
 attrs==20.3.0
+beautifulsoup4==4.9.3
 boardgamegeek2==1.0.1
 cachetools==4.2.1
 certifi==2020.12.5
@@ -23,6 +24,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.3
 Keras-Preprocessing==1.1.2
 llvmlite==0.33.0
+lxml==4.6.3
 Markdown==3.3.4
 MarkupSafe==1.1.1
 mpmath==1.2.1
@@ -45,6 +47,7 @@ resampy==0.2.1
 rsa==4.7.2
 scipy==1.6.2
 six==1.15.0
+soupsieve==2.2.1
 sympy==1.7.1
 tensorboard==2.4.1
 tensorboard-plugin-wit==1.8.0

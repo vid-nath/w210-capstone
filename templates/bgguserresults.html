@@ -32,7 +32,7 @@
   <!-- End navbar -->
 
   <!-- Start Results Introduction -->
-  <section class="section-class team-info">
+  <section class="section is-small team-info">
     <div class="container">
       <div class="columns is-centered">
         <div class="column has-text-centered">
@@ -45,24 +45,29 @@
   <!-- End Results Introduction -->
 
   <!-- Start Results Output -->
-  <section class="section-class team-info">
+  <section class="section is-small">
     <div class="container">
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <div id="resultsTable">
-            <table class="table is-striped is-hoverable">
-              <th>
-                <td>Game Name</td><td>Level</td>
-              </th>
+            <table class="table is-hoverable is-narrow">
+              <thead style="font-size: larger;">
+                <th colspan="2"></th>
+                <th colspan="2">Game Name</th>
+                <th>To Your Tastes</th>
+              </thead>
               <tbody>
-
-            {% for v in data %}
-                <tr>
-              <td>{{ v[0] }}</td> <td>{{ v[1] }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-          </table>
+                {% for v in data %}
+                  <tr>
+                    <td colspan="2" class="has-text-centered" style="vertical-align: middle;"><img src="{{ v[4] }}"></td>
+                    <td colspan="2" class="has-text-centered" style="vertical-align: middle;">
+                      <a href="{{ v[3] }}"><span class="tag is-info is-light is-large">{{ v[1] }}</span></a>
+                    </td>
+                    <td class="td has-text-centered" style="vertical-align: middle;"><span class="tag is-light is-large {{ v[5] }}">{{ v[2] }}</span></td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

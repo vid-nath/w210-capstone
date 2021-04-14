@@ -201,3 +201,8 @@ p.body2 {
   width: auto;
   height: 1096px;
 }
+
+.table {
+  margin-left: auto;
+  margin-right: auto;
+}

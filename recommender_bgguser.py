@@ -28,7 +28,6 @@ def recommender_bgguser(dataset):
     rec_items = MODEL.recommend(new_obs_data_new, k=50)
     # Select 50 recommended games' info.
     df_rec_game_info = df_items.loc[df_items['game_id'].isin(rec_items['game_id'])]
-    print(rec_items) 
      # Filter out game based on user answers.
     df_items_filter=df_rec_game_info[(df_rec_game_info['age_min'] >= filter_condt['age_min'])&
                                 (df_rec_game_info['min_ppl'] <= filter_condt['num_players_min']) &
@@ -41,7 +40,7 @@ def recommender_bgguser(dataset):
     output_name=df_items_filter[df_items_filter['game_id'].isin(output['game_id'])][['game_id','game_title']]
     output=pd.merge(output,output_name, on='game_id')
 
-    output['level'] = output['score'].where(~(output['score']>=9),"Extremely fits your taste ")
+    output['level'] = output['score'].where(~(output['score']>=9),"Extremely fits your taste")
     output['level'] = output['level'].where(~((output['score']>=8)&(output['score']<9)),"Very much fits your taste")
     output['level'] = output['level'].where(~(output['score']<8),"Fits your taste")
     json_output=json.dumps({"game_id": list(output["game_id"]),"game_name": list(output["game_title"]), "level": list(output["level"])})

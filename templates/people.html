@@ -37,7 +37,7 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h2 class="h2-class">Why we built Board Game Guru</h2>
-          <p class="body2">Board Games are now a USD 15 billion market</p><br>
+          <p class="body2" style="color: #371a53;"><em><strong>Board Games are now a USD 15 billion market</strong></em></p><br>
           <p class="body">Gone are the days where playing board games meant playing Scrabble with the grandparents, or Monopoly with kids in the neighborhood. Board games are now actively played across all ages and is a hobby that is growing at 15% a year.</p><br>
           <p class="body">Board Game Guru was built to help board gamers new and old find games that are right for them. With almost 100,000 games listed on BoardGameGeek.com alone, it is a daunting task to try and pick one to play. Board Game Guru aims to help anyone interested in playing board games to discover new games suited to their playstyle in an easily navigable way.</p><br>
           <p class="body">We have built multiple recommendation engines using deep learning models that can cater to both people who are new to board games and enthusiasts. On top of this we have built result filtering directly into the user experience, recognizing the fact that users are being presented with too many options rather than too few.</p><br>
@@ -53,8 +53,10 @@
     <div class="container">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h2 class="h2-class">How we built Board Game Guru</h2>
-          <p class="body2">The Dataset</p><br>
+          <h2 class="h2-class">How We Built Board Game Guru</h2>
+          <hr style="background-color:#674e7f;">
+
+          <p class="body2"><strong>The Dataset</strong></p><br>
           <p class="body">The data powering our recommendation engine was scraped from BoardGameGeek.com, the foremost meeting place for board game enthusiasts online. With profiles for board games, user profile, and reviews, the site is a treasure trove of information for those looking to learn more about board games.</p><br>
           <p class="body">The initial dataset had <b>108,571</b> different games with <b>47,623,627</b> user reviews from <b>513,378</b> real users powers the recommendation engine.</p><br>
           <p class="body">To improve speed and reduce noise, we pared this down to a working dataset of <b>9,596</b> games that had at least 750 ratings.<br> This still left us with <b>486,469</b> users with over <b>40 million</b> reviews to work with.</p><br>
@@ -63,13 +65,18 @@
           <p class="body">Using this data we built filters into our user interface that allowed users to narrow down recommendations by number of players, playing time, or recommended age, all according to how the underlying data was bucketed:</p><br>          
           <img class="img-class" src="../static/img/about/data_eda.png">
           <p class="body">Using this data we built filters into our user interface that allowed users to narrow down recommendations by number of players, playing time, or recommended age, all according to how the underlying data was bucketed:</p><br>          
-          <p class="body2">The Modelling</p><br>
+          <hr style="background-color:#674e7f;">
+
+          <p class="body2"><strong>The Modeling</strong></p><br>
           <p class="body">Board Game Guru uses two types of models to produce recommendations for users: <b><span class="boardgame-class">Matrix Factorization</span> and <span class="boardgame-class">Item KNN</span></b>.</p><br>
           <p class="body">For users with existing BoardGameGeek.com profiles with games already rated on it, a <b>Matrix Factorization</b> model is used. This is an algorithm used in many existing recommendation engines that uses Collaborative Filtering to discover relationships between users and board games through their user reviews, to make recommendations based on the reviews of similar users.</p><br>
           <img class="img-class" src="../static/img/about/matrix_factor.png">
           <p class="body">For users who are new to board games or do not have profiles on BoardGameGeek, an <b>Item KNN</b> model is used. This model computes the similarity between board games by using the observations of users who have interacted with both items.</p><br>
           <img class="img-class" src="../static/img/about/item_knn.png"><br>
-          <p class="body2">Site Architecture</p><br>
+          <hr style="background-color:#674e7f;">
+
+
+          <p class="body2"><strong>The Site Architecture</strong></p><br>
           <p class="body">The web app has been written in Python and is powered by a Flask app. Everything is hosted on AWS' Elastic Beanstalk, with surveys powered by Typeform:</p><br>          
           <img class="img-class" src="../static/img/about/site_architecture.png">
         </div>
